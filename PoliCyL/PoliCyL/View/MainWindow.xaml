@@ -1,0 +1,13 @@
+﻿<Window x:Class="PoliCyL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PoliCyl" Height="216" Width="489">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:/Users/Javier/Documents/Visual Studio 2012/Projects/PoliCyL/PoliCyL/bin/Debug/alergia.jpg"/>
+        </Grid.Background>
+        <Button Content="Actualizar" HorizontalAlignment="Left" Margin="365,141,0,0" VerticalAlignment="Top" Width="106" Height="35" Click="Button_Click_1" BorderBrush="#FF8D8B8B" Foreground="Black" Background="#FFB1FFBC"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="PoliCyL" VerticalAlignment="Top" Foreground="#FFE4DBDB" Height="106" Width="277" FontSize="56"/>
+        <TextBlock HorizontalAlignment="Left" Margin="39,85,0,0" TextWrapping="Wrap" Text="Haz click en Actualizar&#x0a;Para continuar" VerticalAlignment="Top" Foreground="White" Width="143"/>
+    </Grid>
+</Window>

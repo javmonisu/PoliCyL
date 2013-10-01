@@ -1,1 +1,1 @@
-Realizándolo para aprender C# más a fondo junto con XAML
+Realizandolo para aprender C# mas a fondo junto con XAML
