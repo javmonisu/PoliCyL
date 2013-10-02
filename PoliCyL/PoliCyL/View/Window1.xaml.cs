@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace PoliCyL.View
 {
@@ -20,24 +21,23 @@ namespace PoliCyL.View
     public partial class Window1 : Window
     {
         private SuperEstacion parameter;
+        private List<Tipo> medidores;
+    
         private List<SuperEstacion> dataList = new List<SuperEstacion>();
         public Window1(SuperEstacion parameter,List<SuperEstacion> list)
             : this()
-        {
+        {            
+            List<Tipo> medidores2 = new List<Tipo>();
             this.parameter = parameter;
             this.dataList = list;
+            this.medidores = parameter.getMedidores();
             this.WindowStartupLocation = WindowStartupLocation.Manual;
-            List<Tipo> items = parameter.getMedidores();
-            List.ItemsSource = items;
-            char nombre = parameter.getNombre().First();
-            parameter.setNombre(parameter.getNombre().ToLower());
-            //TODO: Corregir Mayúsculas.
-            Estacion.Text = parameter.getNombre();
+            ListViewWindow1.ItemsSource = medidores;
+            Title = parameter.getNombre();
         }
         public Window1()
         {
             InitializeComponent();
-               
         }
         //Volver
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -46,6 +46,5 @@ namespace PoliCyL.View
             newWindow.Show();
             Hide();
         }
-
     }
 }

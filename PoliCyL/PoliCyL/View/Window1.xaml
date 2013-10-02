@@ -1,10 +1,18 @@
 ﻿<Window x:Class="PoliCyL.View.Window1"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PoliCyL" Height="312" Width="405" MaxHeight="312" MinHeight="312" MaxWidth="405" MinWidth="405">
+        Title="{Binding Titulo, RelativeSource={RelativeSource Mode=Self}}" Height="312" Width="405" MaxHeight="312" MinHeight="312" MaxWidth="405" MinWidth="405">
     <Grid>
-        <ListBox Name="List" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top" Width="397" Margin="0,28,0,0" />
         <Button Content="Volver" HorizontalAlignment="Left" Height="32" Margin="0,250,0,0" VerticalAlignment="Top" Width="397" Click="Button_Click_1"/>
-        <TextBlock Name="Estacion" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="26" Width="397" FontSize="18"/>
+              <ListView Margin="10,10,10,32" Name="ListViewWindow1">
+                        <ListView.View>
+                                <GridView>
+                                        <GridViewColumn Header="Nombre" Width="120" DisplayMemberBinding="{Binding nombre}" />
+                                        <GridViewColumn Header="Precedente" Width="104" DisplayMemberBinding="{Binding precedente}" />
+                                        <GridViewColumn Header="Previsión" Width="150" DisplayMemberBinding="{Binding prevision}" />
+                                </GridView>
+                        </ListView.View>
+                </ListView>
     </Grid>
+
 </Window>

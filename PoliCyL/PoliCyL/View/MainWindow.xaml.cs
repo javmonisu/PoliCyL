@@ -65,8 +65,7 @@ namespace PoliCyL
             }
         }
         public static void SplitCSV(String data)
-        {
-            
+        {            
             List<string> splitted = new List<string>();
             string fileList = data;
             fullData = data.Split(new String[] { ";;;;;;;;;\r\n" }, StringSplitOptions.RemoveEmptyEntries);           
