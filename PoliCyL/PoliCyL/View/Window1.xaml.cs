@@ -31,6 +31,7 @@ namespace PoliCyL.View
             List.ItemsSource = items;
             char nombre = parameter.getNombre().First();
             parameter.setNombre(parameter.getNombre().ToLower());
+            //TODO: Corregir Mayúsculas.
             Estacion.Text = parameter.getNombre();
         }
         public Window1()
