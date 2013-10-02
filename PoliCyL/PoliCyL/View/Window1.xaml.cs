@@ -22,12 +22,11 @@ namespace PoliCyL.View
     {
         private SuperEstacion parameter;
         private List<Tipo> medidores;
-    
+        public Boolean back = false;
         private List<SuperEstacion> dataList = new List<SuperEstacion>();
         public Window1(SuperEstacion parameter,List<SuperEstacion> list)
             : this()
         {            
-            List<Tipo> medidores2 = new List<Tipo>();
             this.parameter = parameter;
             this.dataList = list;
             this.medidores = parameter.getMedidores();
@@ -42,9 +41,20 @@ namespace PoliCyL.View
         //Volver
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            back = true;
             Results newWindow = new Results(dataList);
+            newWindow.Owner = this;
+           
             newWindow.Show();
             Hide();
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            if (!back)
+            {
+                for (int intCounter = App.Current.Windows.Count - 1; intCounter >= 0; intCounter--)
+                    App.Current.Windows[intCounter].Close();
+            }
         }
     }
 }

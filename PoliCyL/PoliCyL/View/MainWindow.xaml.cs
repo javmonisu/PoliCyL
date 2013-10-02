@@ -27,10 +27,9 @@ namespace PoliCyL
     {
         public static List<SuperEstacion> dataList = new List<SuperEstacion>();
         Thread workerThread = null;
-        ManualResetEvent threadInterrupt = new ManualResetEvent(false);
         public static String dataNotSplitted,filelist;
         public static String[] rowData,fullData;
-        Boolean threadEnd = false;
+        Boolean threadEnd = false,error=false;
         public MainWindow()
         {
             InitializeComponent();
@@ -39,29 +38,39 @@ namespace PoliCyL
         {
             if (workerThread == null)
             {
-                this.threadInterrupt.Reset();
                 this.workerThread = new Thread(()=>{
                     HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://www.datosabiertos.jcyl.es/web/jcyl/risp/es/mediciones/niveles_de_polen/1284208096554.csv");
-                    HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-                    StreamReader sr = new StreamReader(resp.GetResponseStream());
-                    dataNotSplitted = sr.ReadToEnd();
-                    sr.Close();
-                    //MessageBox.Show(dataNotSplitted);
-                    SplitCSV(dataNotSplitted);
-                    setStations();
-                    threadEnd = true;
-                    
+                    try
+                    {
+                        HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                        StreamReader sr = new StreamReader(resp.GetResponseStream());
+                        dataNotSplitted = sr.ReadToEnd();
+                        sr.Close();
+                        SplitCSV(dataNotSplitted);
+                        setStations();
+                        threadEnd = true;   
+                    }
+                    catch (WebException)
+                    {
+                       MessageBox.Show("Esta aplicación necesita conexión a Internet para funcionar correctamente.\nPor favor, compruebe su conexión a Internet.");
+                       error = true;
+                    }                                                        
                 });
                 this.workerThread.IsBackground = true;
-                this.workerThread.Start();
-               
-                while (!threadEnd)
+                this.workerThread.Start();               
+                while (!threadEnd && !error)
                 {
-                    Thread.Sleep(250); 
+                    Thread.Sleep(125); 
+                }
+                if (error)
+                {
+                    Application.Current.Shutdown();
                 }
                 Results newWindow = new Results(dataList);
+                newWindow.Owner = this;
                 newWindow.Show();
                 Hide();
+                
             }
         }
         public static void SplitCSV(String data)
@@ -91,13 +100,13 @@ namespace PoliCyL
             extractInfo(i);
         }
         /**
-         *Extract the info from the CSV. 
-         * 
+         *Extre información del CSV.
          */
         public static void extractInfo(int i)
         {
             List<Tipo> estacion = new List<Tipo>();
             int k;
+            //Estaciones.
             int[] array2 = new int[] { 16, 12, 12, 9, 16, 12, 7, 14, 13, 14, 11, 13 };
             for (int j = 0; j < 12; j++)
             {
@@ -111,6 +120,12 @@ namespace PoliCyL
                 estacion = new List<Tipo>();
                 i = k;                
             }
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
         }
     }    
 }

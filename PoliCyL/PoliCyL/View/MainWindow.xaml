@@ -3,11 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="PoliCyl" Height="312" Width="405" MaxHeight="312" MinHeight="312" MaxWidth="405" MinWidth="405">
     <Window.Background>
-        <ImageBrush ImageSource="http://i.imgur.com/RH0JAft.jpg"/>  
+        <ImageBrush ImageSource="http://i.imgur.com/kS5lke1.png"/>  
     </Window.Background>
     <Grid>
-        <Button Content="Actualizar" HorizontalAlignment="Left" Margin="257,237,0,0" VerticalAlignment="Top" Width="106" Height="35" Click="Button_Click_1" BorderBrush="#FF8D8B8B" Foreground="Black" Background="#FFB1FFBC"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="PoliCyL" VerticalAlignment="Top" Foreground="#FFE4DBDB" Height="106" Width="277" FontSize="56"/>
-        <TextBlock HorizontalAlignment="Left" Margin="39,85,0,0" TextWrapping="Wrap" Text="Haz click en Actualizar&#x0a;Para continuar" VerticalAlignment="Top" Foreground="White" Width="143"/>
+        <Button Content="Actualizar" HorizontalAlignment="Left" Margin="257,237,0,0" VerticalAlignment="Top" Width="106" Height="35" Click="Button_Click_1" BorderBrush="#FF8D8B8B" Foreground="White" Background="#FFA349A3" FontFamily="Microsoft Sans Serif" FontSize="13"/>
     </Grid>
 </Window>

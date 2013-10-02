@@ -24,7 +24,6 @@ namespace PoliCyL
             this.parameter = parameter;
             this.WindowStartupLocation = WindowStartupLocation.Manual;
         }
-
         public Results()
         {
             InitializeComponent();
@@ -105,7 +104,10 @@ namespace PoliCyL
             PoliCyL.View.Window1 newWindow = new PoliCyL.View.Window1(s, parameter);
             newWindow.Show();
             Hide();
-            
-        }   
+        }
+        protected override void OnClosed(EventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
