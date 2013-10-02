@@ -63,10 +63,6 @@ namespace PoliCyL
                 newWindow.Show();
                 Hide();
             }
-            else
-            {
-                
-            }
         }
         public static void SplitCSV(String data)
         {
