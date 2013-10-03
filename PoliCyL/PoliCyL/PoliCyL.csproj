@@ -74,6 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Code\BackgroundActivity.cs" />
     <Compile Include="View\Results.xaml.cs">
       <DependentUpon>Results.xaml</DependentUpon>
     </Compile>

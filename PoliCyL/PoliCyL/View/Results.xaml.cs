@@ -1,16 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PoliCyL
 {
@@ -96,11 +86,6 @@ namespace PoliCyL
         public void prepareValues(int i)
         {
             SuperEstacion s = parameter[i];
-            if (i == 10)
-            {
-                s.medidores.Reverse();
-            }
-
             PoliCyL.View.Window1 newWindow = new PoliCyL.View.Window1(s, parameter);
             newWindow.Show();
             Hide();

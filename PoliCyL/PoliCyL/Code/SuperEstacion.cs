@@ -14,15 +14,7 @@ namespace PoliCyL
         public String getNombre()
         {
             return nombre;
-        }
-        public void setNombre(String nombre)
-        {
-            this.nombre = nombre;
-        }
-        public void setMedidores(List<Tipo> medidores)
-        {
-            this.medidores = medidores;
-        }
+        }        
         public List<Tipo> getMedidores()
         {
             return medidores;
