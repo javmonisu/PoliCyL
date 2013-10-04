@@ -87,8 +87,10 @@ namespace PoliCyL
         {
             SuperEstacion s = parameter[i];
             PoliCyL.View.Window1 newWindow = new PoliCyL.View.Window1(s, parameter);
+            newWindow.Owner = this;
+            newWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             newWindow.Show();
-            Hide();
+            Hide();    
         }
         protected override void OnClosed(EventArgs e)
         {

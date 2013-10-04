@@ -68,7 +68,7 @@ namespace PoliCyL.Code
             Split(0);
             estacion.Add(new Tipo(rowData[31], rowData[32], rowData[30]));
             int i;
-            for (i = 1; i <= 12; i++)
+            for (i = 1; i <= 13; i++)
             {
                 Split(i);
                 estacion.Add(new Tipo(rowData[5], rowData[6], rowData[4]));
@@ -84,7 +84,7 @@ namespace PoliCyL.Code
             List<Tipo> estacion = new List<Tipo>();
             int k;
             //Estaciones.
-            int[] array2 = new int[] { 16, 12, 12, 9, 16, 12, 7, 14, 13, 14, 11, 13 };
+            int[] array2 = new int[] { 13, 15, 15, 12, 17, 11, 10, 12, 14, 6, 17, 13 };
             for (int j = 0; j < 12; j++)
             {
                 for (k = i; k < i + array2[j]; k++)

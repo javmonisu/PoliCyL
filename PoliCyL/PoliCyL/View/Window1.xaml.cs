@@ -32,6 +32,7 @@ namespace PoliCyL.View
         {
             back = true;
             Results newWindow = new Results(dataList);
+            newWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             newWindow.Owner = this;
             newWindow.Show();
             Hide();

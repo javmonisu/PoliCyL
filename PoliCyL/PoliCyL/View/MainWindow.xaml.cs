@@ -41,6 +41,7 @@ namespace PoliCyL
                 }                
                 Results newWindow = new Results(dataList);
                 newWindow.Owner = this;
+                newWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 newWindow.Show();
                 Hide();                
             }
