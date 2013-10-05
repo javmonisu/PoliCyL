@@ -4,8 +4,13 @@ using System.Windows;
 
 namespace PoliCyL
 {
+    /// <summary>
+    /// Lógica de interacción para Results.xaml
+    /// </summary>
+    /// 
     public partial class Results : Window
     {
+
         private List<SuperEstacion> parameter;
 
         public Results(List<SuperEstacion> parameter)
