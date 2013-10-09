@@ -1,7 +1,7 @@
 ﻿<Window x:Class="PoliCyL.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="PoliCyl" Height="312" Width="405" MaxHeight="312" MinHeight="312" MaxWidth="405" MinWidth="405">
+        Title="PoliCyl" Height="312" Width="405"  WindowStartupLocation="CenterScreen"  MaxHeight="312" MinHeight="312" MaxWidth="405" MinWidth="405">
     <Window.Background>
         <ImageBrush ImageSource="http://i.imgur.com/kS5lke1.png"/>  
     </Window.Background>
