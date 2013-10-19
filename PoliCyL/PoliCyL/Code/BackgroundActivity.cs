@@ -48,7 +48,8 @@ namespace PoliCyL.Code
         {
             List<string> splitted = new List<string>();
             string fileList = data;
-            fullData = data.Split(new String[] { ";;;;;;;;;\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+            fullData = data.Split(new String[] { ";;;;;NIVELES DE POLEN;;;;;;;;\r\n;A�O;SEMANA;ESTACIONES;TIPOS POL�NICOS;PRECEDENTES           (�ltimos d�as);PREVISION pr�ximos d�as;;;;;;;\r\n" }, StringSplitOptions.RemoveEmptyEntries);
         }
         /**
          * Divide un token en mini-tokens.

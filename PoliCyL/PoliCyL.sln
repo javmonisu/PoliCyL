@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliCyL", "PoliCyL\PoliCyL.csproj", "{2F241D5A-30A4-422E-B92F-12E42B534D71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliCyLUnitTest", "PoliCyLUnitTest\PoliCyLUnitTest.csproj", "{CC90EB29-BFA4-466C-A8E4-96CB29C6BD8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{2F241D5A-30A4-422E-B92F-12E42B534D71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F241D5A-30A4-422E-B92F-12E42B534D71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F241D5A-30A4-422E-B92F-12E42B534D71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC90EB29-BFA4-466C-A8E4-96CB29C6BD8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC90EB29-BFA4-466C-A8E4-96CB29C6BD8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC90EB29-BFA4-466C-A8E4-96CB29C6BD8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC90EB29-BFA4-466C-A8E4-96CB29C6BD8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
