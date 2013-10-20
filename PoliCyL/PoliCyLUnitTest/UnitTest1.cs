@@ -72,7 +72,6 @@ namespace PoliCyLUnitTest
                 }
                 i--;
             }
-            Console.WriteLine("hello");
             Assert.AreEqual(13,ciudades.Count);
         }
     }
