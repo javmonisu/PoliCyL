@@ -1,1 +1,0 @@
-Realizandolo para aprender C# mas a fondo junto con XAML

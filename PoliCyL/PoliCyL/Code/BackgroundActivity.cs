@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows;
 using System.Windows.Documents;
-using System.IO;
-using System.Net;
-using System.Threading;
 
 namespace PoliCyL.Code
 {
@@ -74,7 +73,6 @@ namespace PoliCyL.Code
             List<Tipo> medidores = new List<Tipo>();
             String localidad = null;
             localidad = rowData.ElementAt(3);
-
             for (int i = 5; i < rowData.Length; i++)
             {
                 if ((rowData.ElementAt(i - 2).Equals(localidad) || rowData.ElementAt(i - 3).Equals(localidad)) && i < rowData.Length - 3)

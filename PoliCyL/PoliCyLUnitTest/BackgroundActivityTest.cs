@@ -1,16 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PoliCyL;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using PoliCyL;
-using PoliCyL.Code;
 
 namespace PoliCyLUnitTest
 {
     [TestClass]
-    public class UnitTest1
+    public class BackgroundActivityTest
     {
         public static String data;
         public static String[] tokens,final;

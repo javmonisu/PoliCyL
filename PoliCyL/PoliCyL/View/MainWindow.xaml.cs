@@ -9,7 +9,6 @@ namespace PoliCyL
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
     /// 
-
     public partial class MainWindow : Window
     {
         public static List<SuperEstacion> dataList = null;
@@ -33,7 +32,7 @@ namespace PoliCyL
                 this.workerThread.Start();               
                 while (dataList==null && !error)
                 {
-                    Thread.Sleep(125); 
+                    Thread.Sleep(0); 
                 }
                 if (error)
                 {                  
