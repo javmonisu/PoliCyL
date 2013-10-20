@@ -64,6 +64,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PoliCyL\PoliCyL.csproj">
+      <Project>{2f241d5a-30a4-422e-b92f-12e42b534d71}</Project>
+      <Name>PoliCyL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

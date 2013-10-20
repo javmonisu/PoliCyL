@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using PoliCyL;
+using PoliCyL.Code;
 
 namespace PoliCyLUnitTest
 {
@@ -42,8 +44,8 @@ namespace PoliCyLUnitTest
         [TestMethod]
         public void hasNotDataChanged()
         {
-            final = tokens[0].ToString().Split(';');
-            Assert.AreEqual(1876, final.Length);
+            final = tokens[0].ToString().Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+            Assert.AreEqual(876, final.Length);
         }
         [TestMethod]
         public void hasSameNumberOfStations()
@@ -53,9 +55,9 @@ namespace PoliCyLUnitTest
             for (int i = 3; i < final.Length;i++)
             {
                 bool exists = false;
-                if ((i + 15) < final.Length)
+                if ((i + 8) < final.Length)
                 {
-                    i = i + 15;
+                    i = i + 7;
                 }
                 else
                 {
@@ -84,6 +86,40 @@ namespace PoliCyLUnitTest
             for(int i = 0 ; i < ciudades.Count; i++){
                 Assert.AreEqual(oldCities.ElementAt(i), ciudades.ElementAt(i));
             }       
+        }
+        [TestMethod]
+        public void orderRawInfo()
+        {        
+            List<Tipo> medidores = new List<Tipo>();
+            List<SuperEstacion> listaEstaciones = new List<SuperEstacion>();
+            String localidad = null;            
+            localidad = final.ElementAt(3);
+
+            for (int i = 5; i < final.Length; i++)
+            {
+                if ((final.ElementAt(i - 2).Equals(localidad) || final.ElementAt(i - 3).Equals(localidad)) && i < final.Length - 3)
+                {
+                    medidores.Add(new Tipo(final.ElementAt(i), final.ElementAt(i + 1), final.ElementAt(i - 1)));
+                }               
+                else
+                {                   
+                    if (i >= final.Length - 3)
+                    {
+                        medidores.Add(new Tipo(final.ElementAt(i), final.ElementAt(i + 1), final.ElementAt(i - 1)));
+                        listaEstaciones.Add(new SuperEstacion(medidores, localidad));
+                        break;
+                    }
+                    listaEstaciones.Add(new SuperEstacion(medidores, localidad));
+                    medidores = new List<Tipo>();
+                    medidores.Add(new Tipo(final.ElementAt(i), final.ElementAt(i + 1), final.ElementAt(i - 1)));
+                    localidad = final.ElementAt(i - 2);
+                }
+                if ((i + 7) < final.Length)
+                {
+                    i = i + 6;
+                }                                       
+            }
+            Assert.AreEqual(listaEstaciones.Count, ciudades.Count);
         }
     }
 }
