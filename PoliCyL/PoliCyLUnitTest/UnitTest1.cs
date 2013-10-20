@@ -12,6 +12,8 @@ namespace PoliCyLUnitTest
     {
         public static String data;
         public static String[] tokens,final;
+        public static List<string> ciudades;
+
         [TestMethod]
         public void isHTTPWebServiceAvaliable()
         {
@@ -38,7 +40,7 @@ namespace PoliCyLUnitTest
             Assert.AreEqual(1, tokens.Length);
         }
         [TestMethod]
-        public void hasDataChanged()
+        public void hasNotDataChanged()
         {
             final = tokens[0].ToString().Split(';');
             Assert.AreEqual(1876, final.Length);
@@ -46,7 +48,7 @@ namespace PoliCyLUnitTest
         [TestMethod]
         public void hasSameNumberOfStations()
         {
-            List<String> ciudades = new List<string>();
+            ciudades = new List<string>();
             ciudades.Add(final[3]);
             for (int i = 3; i < final.Length;i++)
             {
@@ -73,6 +75,15 @@ namespace PoliCyLUnitTest
                 i--;
             }
             Assert.AreEqual(13,ciudades.Count);
+        }
+        [TestMethod]
+        public void hasTheSameOrder()
+        {
+            String[] ciudadesAnt = { "AVILA", "ARENAS DE SAN PEDRO","BURGOS","MIRANDA DE EBRO","LEON","PONFERRADA","PALENCIA","SALAMANCA","SEGOVIA","SORIA","VALLADOLID","ZAMORA","BEJAR" };
+            List<string> oldCities = new List<string>(ciudadesAnt);
+            for(int i = 0 ; i < ciudades.Count; i++){
+                Assert.AreEqual(oldCities.ElementAt(i), ciudades.ElementAt(i));
+            }       
         }
     }
 }
