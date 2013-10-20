@@ -56,7 +56,7 @@ namespace PoliCyL.Code
         public static void Split(int i)
         {
             string afileList = fullData[i].ToString();
-            rowData = afileList.Split(';');
+            rowData = afileList.Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries); 
         }
         /**
          * Se encarga de agregar a un array las diferentes estaciones de medición.
@@ -71,27 +71,34 @@ namespace PoliCyL.Code
          */
         public static void extractInfo()
         {
-            int i = 0, w = 5;
-            List<Tipo> estacion = new List<Tipo>();
-            int k;
-            //Estaciones.
-            int[] array2 = new int[] { 13, 15, 15, 12, 17, 11, 10, 12, 14, 6, 17, 13 };           
-            for (int j = 0; j < 12; j++)
+            List<Tipo> medidores = new List<Tipo>();
+            String localidad = null;
+            localidad = rowData.ElementAt(3);
+
+            for (int i = 5; i < rowData.Length; i++)
             {
-                String provincia = rowData[w - 2];
-                for (k = i; k < i + array2[j] ; k++)
+                if ((rowData.ElementAt(i - 2).Equals(localidad) || rowData.ElementAt(i - 3).Equals(localidad)) && i < rowData.Length - 3)
                 {
-                    if (!rowData[w - 2].Equals(provincia))
-                    {
-                        continue;
-                    } 
-                    estacion.Add(new Tipo(rowData[w], rowData[(w+1)], rowData[(w-1)]));
-                    w += 15;                  
+                    medidores.Add(new Tipo(rowData.ElementAt(i), rowData.ElementAt(i + 1), rowData.ElementAt(i - 1)));
                 }
-                dataList.Add(new SuperEstacion(estacion, rowData[w-2]));
-                estacion = new List<Tipo>();
-                i = w;
-            }          
+                else
+                {
+                    if (i >= rowData.Length - 3)
+                    {
+                        medidores.Add(new Tipo(rowData.ElementAt(i), rowData.ElementAt(i + 1), rowData.ElementAt(i - 1)));
+                        dataList.Add(new SuperEstacion(medidores, localidad));
+                        break;
+                    }
+                    dataList.Add(new SuperEstacion(medidores, localidad));
+                    medidores = new List<Tipo>();
+                    medidores.Add(new Tipo(rowData.ElementAt(i), rowData.ElementAt(i + 1), rowData.ElementAt(i - 1)));
+                    localidad = rowData.ElementAt(i - 2);
+                }
+                if ((i + 7) < rowData.Length)
+                {
+                    i = i + 6;
+                }
+            }
         }       
     }
 }
