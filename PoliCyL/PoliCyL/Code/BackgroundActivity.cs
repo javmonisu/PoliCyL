@@ -48,7 +48,6 @@ namespace PoliCyL.Code
         {
             List<string> splitted = new List<string>();
             string fileList = data;
-
             fullData = data.Split(new String[] { ";;;;;NIVELES DE POLEN;;;;;;;;\r\n;A�O;SEMANA;ESTACIONES;TIPOS POL�NICOS;PRECEDENTES           (�ltimos d�as);PREVISION pr�ximos d�as;;;;;;;\r\n" }, StringSplitOptions.RemoveEmptyEntries);
         }
         /**
@@ -64,39 +63,34 @@ namespace PoliCyL.Code
          * */
         public static void setStations()
         {
-            List<Tipo> estacion = new List<Tipo>();
-            //Caso excepcional : Avila
-            Split(0);
-            estacion.Add(new Tipo(rowData[31], rowData[32], rowData[30]));
-            int i;
-            Split(1);
-            for (i = 2; i <= 13 && rowData[3]=="AVILA"; i++)
-            {
-                Split(i);
-                estacion.Add(new Tipo(rowData[5], rowData[6], rowData[4]));
-            }
-            dataList.Add(new SuperEstacion(estacion, rowData[3]));
-            extractInfo(i);
+            Split(0);       
+            extractInfo();
         }
         /**
          *Extrae información del CSV.
          */
-        public static void extractInfo(int i)
+        public static void extractInfo()
         {
+            int i = 0, w = 5;
             List<Tipo> estacion = new List<Tipo>();
             int k;
             //Estaciones.
             int[] array2 = new int[] { 13, 15, 15, 12, 17, 11, 10, 12, 14, 6, 17, 13 };           
             for (int j = 0; j < 12; j++)
             {
-                for (k = i; k < i + array2[j]; k++)
+                String provincia = rowData[w - 2];
+                for (k = i; k < i + array2[j] ; k++)
                 {
-                    Split(k);
-                    estacion.Add(new Tipo(rowData[5], rowData[6], rowData[4]));
+                    if (!rowData[w - 2].Equals(provincia))
+                    {
+                        continue;
+                    } 
+                    estacion.Add(new Tipo(rowData[w], rowData[(w+1)], rowData[(w-1)]));
+                    w += 15;                  
                 }
-                dataList.Add(new SuperEstacion(estacion, rowData[3]));
+                dataList.Add(new SuperEstacion(estacion, rowData[w-2]));
                 estacion = new List<Tipo>();
-                i = k;
+                i = w;
             }          
         }       
     }

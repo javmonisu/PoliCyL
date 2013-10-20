@@ -1,13 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Net;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
 using System.IO;
+using System.Linq;
 using System.Net;
-using System.Threading;
 
 namespace PoliCyLUnitTest
 {
@@ -15,7 +11,7 @@ namespace PoliCyLUnitTest
     public class UnitTest1
     {
         public static String data;
-        public static String[] tokens;
+        public static String[] tokens,final;
         [TestMethod]
         public void isHTTPWebServiceAvaliable()
         {
@@ -28,7 +24,6 @@ namespace PoliCyLUnitTest
             catch (WebException)
             {
                 Assert.Fail();
-
             }
             StreamReader sr = new StreamReader(resp.GetResponseStream());
             String dataNotSplitted = sr.ReadToEnd();
@@ -45,8 +40,40 @@ namespace PoliCyLUnitTest
         [TestMethod]
         public void hasDataChanged()
         {
-            string[] afileList = tokens[0].ToString().Split(';');
-            Assert.AreEqual(1876, afileList.Length);
+            final = tokens[0].ToString().Split(';');
+            Assert.AreEqual(1876, final.Length);
+        }
+        [TestMethod]
+        public void hasSameNumberOfStations()
+        {
+            List<String> ciudades = new List<string>();
+            ciudades.Add(final[3]);
+            for (int i = 3; i < final.Length;i++)
+            {
+                bool exists = false;
+                if ((i + 15) < final.Length)
+                {
+                    i = i + 15;
+                }
+                else
+                {
+                    continue;
+                }               
+                for (int j = 0; j < ciudades.Count(); j++)
+                    {
+                        if (final[i].Equals(ciudades.ElementAt(j)))
+                        {
+                            exists = true;
+                        }
+                }
+                if (!exists)
+                {
+                    ciudades.Add(final[i]);
+                }
+                i--;
+            }
+            Console.WriteLine("hello");
+            Assert.AreEqual(13,ciudades.Count);
         }
     }
 }
