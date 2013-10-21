@@ -90,8 +90,7 @@ namespace PoliCyLUnitTest
         {        
             List<Tipo> medidores = new List<Tipo>();
             List<SuperEstacion> listaEstaciones = new List<SuperEstacion>();
-            String localidad = null;            
-            localidad = final.ElementAt(3);
+            String localidad = final.ElementAt(3);
 
             for (int i = 5; i < final.Length; i++)
             {
