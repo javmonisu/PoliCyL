@@ -29,10 +29,9 @@ namespace PoliCyLUnitTest
                 Assert.Fail();
             }
             StreamReader sr = new StreamReader(resp.GetResponseStream());
-            String dataNotSplitted = sr.ReadToEnd();
-            data = dataNotSplitted;
+            data = sr.ReadToEnd();
             sr.Close();
-            Assert.AreNotEqual(null, dataNotSplitted);
+            Assert.AreNotEqual(null, data);
         }
         [TestMethod]
         public void isTheSameDataBeggining()
