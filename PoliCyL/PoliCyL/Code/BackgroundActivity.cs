@@ -84,10 +84,10 @@ namespace PoliCyL.Code
                     if (i >= rowData.Length - 3)
                     {
                         medidores.Add(new Tipo(rowData.ElementAt(i), rowData.ElementAt(i + 1), rowData.ElementAt(i - 1)));
-                        dataList.Add(new SuperEstacion(medidores, localidad));
+                        dataList.Add(new SuperEstacion(orderArray(medidores), localidad));
                         break;
                     }
-                    dataList.Add(new SuperEstacion(medidores, localidad));
+                    dataList.Add(new SuperEstacion(orderArray(medidores), localidad));
                     medidores = new List<Tipo>();
                     medidores.Add(new Tipo(rowData.ElementAt(i), rowData.ElementAt(i + 1), rowData.ElementAt(i - 1)));
                     localidad = rowData.ElementAt(i - 2);
@@ -97,6 +97,11 @@ namespace PoliCyL.Code
                     i = i + 6;
                 }
             }
-        }       
+        }
+        public static List<Tipo> orderArray(List<Tipo> medidores)
+        {
+            List<Tipo> orderedList = medidores.OrderBy(o => o.getNombre()).ToList();
+            return orderedList;
+        }
     }
 }
