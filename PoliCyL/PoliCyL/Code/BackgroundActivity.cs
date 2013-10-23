@@ -10,9 +10,9 @@ namespace PoliCyL.Code
 {
     class BackgroundActivity 
     {
-        public static List<SuperEstacion> dataList = new List<SuperEstacion>();
-        public static String dataNotSplitted;
-        public static String[] rowData, fullData;
+        private static List<SuperEstacion> dataList = new List<SuperEstacion>();
+        private static String dataNotSplitted;
+        private static String[] rowData, fullData;
         HttpWebResponse resp = null;
 
         public BackgroundActivity(){}
@@ -43,7 +43,7 @@ namespace PoliCyL.Code
         /**
          * Divide la información en tokens.
          * */
-        public static void SplitCSV(String data)
+        private static void SplitCSV(String data)
         {
             List<string> splitted = new List<string>();
             string fileList = data;

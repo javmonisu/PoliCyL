@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace PoliCyL
 {
-    public class SuperEstacion
+   public class SuperEstacion
     {
-        public String nombre;
-        public List<Tipo> medidores;
+        private String nombre;
+        private List<Tipo> medidores;
 
         public String getNombre()
         {
