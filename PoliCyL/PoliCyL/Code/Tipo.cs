@@ -4,9 +4,9 @@ namespace PoliCyL
 {
     public class Tipo
     {
-        private String nombre { get; set; }
-        private String precedente { get; set; }
-        private String prevision { get; set; }
+        public String nombre { get; set; }
+        public String precedente { get; set; }
+        public String prevision { get; set; }
                
         public Tipo(String precedente, String prevision, String nombre)
         {
