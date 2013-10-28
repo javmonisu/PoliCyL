@@ -43,7 +43,7 @@ namespace PoliCyLUnitTest
         public void hasNotDataChanged()
         {
             final = tokens[0].ToString().Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
-            Assert.AreEqual(876, final.Length);
+            Assert.AreEqual(722, final.Length);
         }
         [TestMethod]
         public void hasSameNumberOfStations()
