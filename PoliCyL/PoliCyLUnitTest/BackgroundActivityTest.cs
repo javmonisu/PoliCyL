@@ -43,7 +43,7 @@ namespace PoliCyLUnitTest
         public void hasNotDataChanged()
         {
             final = tokens[0].ToString().Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
-            Assert.AreEqual(414, final.Length);
+            Assert.AreEqual(498, final.Length);
         }
         [TestMethod]
         public void hasSameNumberOfStations()
@@ -119,4 +119,4 @@ namespace PoliCyLUnitTest
             Assert.AreEqual(listaEstaciones.Count, ciudades.Count);
         }
     }
-}
+}   
